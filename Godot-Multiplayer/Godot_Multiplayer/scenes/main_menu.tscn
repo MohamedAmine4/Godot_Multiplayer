@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba8vmc2i6krq6"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bqead"]
+
+[sub_resource type="Theme" id="Theme_n2lb8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqead")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.443137, 0.0313726, 1, 1)
+layout_mode = 2
+theme = SubResource("Theme_n2lb8")
+text = "          HELLO         "
+
+[node name="AddressEntry" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.137255, 1, 1, 1)
+layout_mode = 2
+placeholder_text = "IP ADDRESS"
+alignment = 1
+
+[node name="NameEntry" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.211765, 1, 1, 1)
+layout_mode = 2
+placeholder_text = "PLAYER NAME"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.486275, 1, 1, 1)
+self_modulate = Color(0.501961, 0.619608, 1, 1)
+layout_mode = 2
+text = "join"
+
+[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.0196078, 0.607843, 1, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.917647, 0.917647, 0.917647, 1)
+text = "host"

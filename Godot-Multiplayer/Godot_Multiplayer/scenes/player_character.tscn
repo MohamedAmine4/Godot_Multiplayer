@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2tqqow5nlahe"]
+
+[ext_resource type="Script" path="res://scenes/player_character.gd" id="1_x22si"]
+[ext_resource type="Texture2D" uid="uid://btcb5hfe1ktc8" path="res://assets/spr_m_unko.png" id="2_lcyhk"]
+[ext_resource type="PackedScene" uid="uid://wuwhsw6f0g03" path="res://scenes/love_particles.tscn" id="3_fhaoa"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_v23j0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("NameTag:text")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("PeerIdTag:text")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pv30u"]
+radius = 7.0
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_x22si")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_v23j0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 8)
+scale = Vector2(3.25, 1.875)
+texture = ExtResource("2_lcyhk")
+
+[node name="NameTag" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 56.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAMETAG"
+horizontal_alignment = 1
+
+[node name="PeerIdTag" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -92.0
+offset_right = 56.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PEER ID"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pv30u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LoveParticles" parent="." instance=ExtResource("3_fhaoa")]
